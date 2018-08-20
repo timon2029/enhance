@@ -1,0 +1,668 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Events</name>
+    <events>
+        <include>Utils</include>
+        <comment>Ask for permission to schedule local notifications</comment>
+        <comment>This can be done at any point in the application</comment>
+        <event-block sid="206025076153629">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="167660810665178" type="System" />
+            </conditions>
+            <actions>
+                <action id="6" name="Request Permission" sid="453408323500844" type="Enhance" />
+            </actions>
+        </event-block>
+        <comment>Interstitial Ad</comment>
+        <event-block sid="235469776575313">
+            <conditions>
+                <condition id="0" name="On function" sid="338070426765693" type="Function">
+                    <param id="0" name="Name">&quot;onShowInterstitialAdClicked&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Show Interstitial Ad" sid="742385842561423" type="Enhance">
+                    <param id="0" name="Placement">&quot;default&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>Interstitial ad was available and is currently showing</comment>
+        <event-block sid="389028095814639">
+            <conditions>
+                <condition id="0" name="On Interstitial Ad success" sid="382828529705141" type="Enhance" />
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="692330317454829" type="Function">
+                    <param id="0" name="Name">&quot;writeLog&quot;</param>
+                    <param id="1" name="Parameter {n}">&quot;Showing interstitial ad&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>Interstitial ad was unavailable</comment>
+        <event-block sid="129138782176437">
+            <conditions>
+                <condition id="1" name="On Interstitial Ad failed" sid="857960727294811" type="Enhance" />
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="855398820386423" type="Function">
+                    <param id="0" name="Name">&quot;writeLog&quot;</param>
+                    <param id="1" name="Parameter {n}">&quot;Interstitial ad is not ready&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>Rewarded Ad</comment>
+        <event-block sid="171982383653483">
+            <conditions>
+                <condition id="0" name="On function" sid="251294653695728" type="Function">
+                    <param id="0" name="Name">&quot;onShowRewardedAdClicked&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="1" name="Show Rewarded Ad" sid="752933792497813" type="Enhance">
+                    <param id="0" name="Placement">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>Rewarded ad was available and is currently showing</comment>
+        <event-block sid="337281512902369">
+            <conditions>
+                <condition id="2" name="On Rewarded Ad success" sid="433383423232385" type="Enhance" />
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="538863811445883" type="Function">
+                    <param id="0" name="Name">&quot;writeLog&quot;</param>
+                    <param id="1" name="Parameter {n}">&quot;Showing rewarded ad&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>Rewarded ad was unavailable</comment>
+        <event-block sid="653186411398666">
+            <conditions>
+                <condition id="3" name="On Rewarded Ad failed" sid="462019820070030" type="Enhance" />
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="993796157255813" type="Function">
+                    <param id="0" name="Name">&quot;writeLog&quot;</param>
+                    <param id="1" name="Parameter {n}">&quot;Rewarded ad is not ready&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>Reward is granted (user watched the ad for example)</comment>
+        <event-block sid="265856738642563">
+            <conditions>
+                <condition id="4" name="On Reward granted" sid="311952307066205" type="Enhance" />
+            </conditions>
+            <actions />
+            <sub-events>
+                <comment>You can check reward type:</comment>
+                <event-block sid="202490083255841">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="312618949369782" type="System">
+                            <param id="0" name="First value">Enhance.LastRewardType</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Second value">Enhance.RewardTypeItem</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="320705302899043" type="Function">
+                            <param id="0" name="Name">&quot;writeLog&quot;</param>
+                            <param id="1" name="Parameter {n}">&quot;Reward granted (item)&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="311246254763844">
+                    <conditions>
+                        <condition id="-22" name="Else" sid="805201153197514" type="System" />
+                        <condition id="-8" name="Compare two values" sid="770698482691092" type="System">
+                            <param id="0" name="First value">Enhance.LastRewardType</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Second value">Enhance.RewardTypeCoins</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="268023194882547" type="Function">
+                            <param id="0" name="Name">&quot;writeLog&quot;</param>
+                            <param id="1" name="Parameter {n}">&quot;Reward granted (coins)&quot;</param>
+                        </action>
+                        <action id="0" name="Call function" sid="746005598637992" type="Function">
+                            <param id="0" name="Name">&quot;writeLog&quot;</param>
+                            <param id="1" name="Parameter {n}">&quot;Reward value: &quot; &amp; Enhance.LastRewardValue</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="681016690985895">
+                    <conditions>
+                        <condition id="-22" name="Else" sid="708805950835867" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="825826444329194" type="Function">
+                            <param id="0" name="Name">&quot;writeLog&quot;</param>
+                            <param id="1" name="Parameter {n}">&quot;Unknown reward granted&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <comment>Reward is declined (user closed the ad for example)</comment>
+        <event-block sid="117170914027852">
+            <conditions>
+                <condition id="5" name="On Reward declined" sid="642984898293402" type="Enhance" />
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="775809343764559" type="Function">
+                    <param id="0" name="Name">&quot;writeLog&quot;</param>
+                    <param id="1" name="Parameter {n}">&quot;Reward declined&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>Reward is unavailable (network error for example)</comment>
+        <event-block sid="546286917194603">
+            <conditions>
+                <condition id="6" name="On Reward unavailable" sid="132709655938284" type="Enhance" />
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="328926872689623" type="Function">
+                    <param id="0" name="Name">&quot;writeLog&quot;</param>
+                    <param id="1" name="Parameter {n}">&quot;Reward unavailable&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>Banner Ad</comment>
+        <event-block sid="527837043664876">
+            <conditions>
+                <condition id="0" name="On function" sid="181196870857367" type="Function">
+                    <param id="0" name="Name">&quot;onToggleBannerAdClicked&quot;</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <comment>Hide banner if already shown</comment>
+                <event-block sid="416756359883493">
+                    <conditions>
+                        <condition id="9" name="Is Banner Ad shown" sid="970677722743254" type="Enhance" />
+                    </conditions>
+                    <actions>
+                        <action id="3" name="Hide Banner Ad" sid="806504787334056" type="Enhance" />
+                        <action id="0" name="Call function" sid="472833687661796" type="Function">
+                            <param id="0" name="Name">&quot;writeLog&quot;</param>
+                            <param id="1" name="Parameter {n}">&quot;Hiding banner ad&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>Show banner ad</comment>
+                <event-block sid="194949339378122">
+                    <conditions>
+                        <condition id="-22" name="Else" sid="132559465466220" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="2" name="Show Banner Ad" sid="239706274647752" type="Enhance">
+                            <param id="0" name="Position">1</param>
+                            <param id="1" name="Placement">&quot;default&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <comment>Banner was available and is currently showing</comment>
+        <event-block sid="764517013004893">
+            <conditions>
+                <condition id="7" name="On Banner Ad success" sid="837606055969540" type="Enhance" />
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="860475808883273" type="Function">
+                    <param id="0" name="Name">&quot;writeLog&quot;</param>
+                    <param id="1" name="Parameter {n}">&quot;Showing banner ad&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>Banner was unavailable</comment>
+        <event-block sid="741884806630376">
+            <conditions>
+                <condition id="8" name="On Banner Ad failed" sid="448179027290759" type="Enhance" />
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="228277867780140" type="Function">
+                    <param id="0" name="Name">&quot;writeLog&quot;</param>
+                    <param id="1" name="Parameter {n}">&quot;Banner ad is not ready&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>Offerwall</comment>
+        <event-block sid="511682373771314">
+            <conditions>
+                <condition id="0" name="On function" sid="601673479963302" type="Function">
+                    <param id="0" name="Name">&quot;onShowOfferwallClicked&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="4" name="Show Offerwall" sid="726154828698056" type="Enhance">
+                    <param id="0" name="Placement">&quot;default&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>Offerwall was available and is currently showing</comment>
+        <event-block sid="965380657382157">
+            <conditions>
+                <condition id="10" name="On Offerwall success" sid="118508147652422" type="Enhance" />
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="488360127436454" type="Function">
+                    <param id="0" name="Name">&quot;writeLog&quot;</param>
+                    <param id="1" name="Parameter {n}">&quot;Showing offerwall&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>Offerwall was unavailable</comment>
+        <event-block sid="195777906833623">
+            <conditions>
+                <condition id="11" name="On Offerwall failed" sid="467378688640808" type="Enhance" />
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="860338089005265" type="Function">
+                    <param id="0" name="Name">&quot;writeLog&quot;</param>
+                    <param id="1" name="Parameter {n}">&quot;Offerwall is not ready&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>User received a reward from offerwall network</comment>
+        <event-block sid="614473106110428">
+            <conditions>
+                <condition id="12" name="On Currency granted" sid="744780566727541" type="Enhance" />
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="433596279275173" type="Function">
+                    <param id="0" name="Name">&quot;writeLog&quot;</param>
+                    <param id="1" name="Parameter {n}">&quot;Currency granted: &quot; &amp; Enhance.LastCurrencyAmount</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>Special Offer</comment>
+        <event-block sid="359836921515282">
+            <conditions>
+                <condition id="0" name="On function" sid="547312960633087" type="Function">
+                    <param id="0" name="Name">&quot;onShowSpecialOfferClicked&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="5" name="Show Special Offer" sid="799111638679432" type="Enhance">
+                    <param id="0" name="Placement">&quot;default&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>Special offer was available and is currently showing</comment>
+        <event-block sid="892410727511122">
+            <conditions>
+                <condition id="13" name="On Special Offer success" sid="456567079425109" type="Enhance" />
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="771685355855289" type="Function">
+                    <param id="0" name="Name">&quot;writeLog&quot;</param>
+                    <param id="1" name="Parameter {n}">&quot;Showing special offer&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>Special offer was unavailable</comment>
+        <event-block sid="511520043579014">
+            <conditions>
+                <condition id="14" name="On Special Offer failed" sid="779634240178253" type="Enhance" />
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="168048671683030" type="Function">
+                    <param id="0" name="Name">&quot;writeLog&quot;</param>
+                    <param id="1" name="Parameter {n}">&quot;Special offer is not ready&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>Analytics</comment>
+        <event-block sid="781622552284525">
+            <conditions>
+                <condition id="0" name="On function" sid="504575424018247" type="Function">
+                    <param id="0" name="Name">&quot;onLogEventClicked&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="138370873325334" type="Function">
+                    <param id="0" name="Name">&quot;writeLog&quot;</param>
+                    <param id="1" name="Parameter {n}">&quot;Sent analytics event&quot;</param>
+                </action>
+            </actions>
+            <sub-events>
+                <comment>Simple event</comment>
+                <event-block sid="192473294312652">
+                    <conditions />
+                    <actions>
+                        <action id="9" name="Log Simple Event" sid="587970811861420" type="Enhance">
+                            <param id="0" name="Event Name">&quot;event_type&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>Event with an additional parameter</comment>
+                <event-block sid="899584396385587">
+                    <conditions />
+                    <actions>
+                        <action id="10" name="Log Event" sid="337192557098191" type="Enhance">
+                            <param id="0" name="Event Name">&quot;event_type&quot;</param>
+                            <param id="1" name="Parameter Key">&quot;event_param_key&quot;</param>
+                            <param id="2" name="Parameter Value">&quot;event_param_value&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <comment>Local Notification</comment>
+        <event-block sid="715899103003184">
+            <conditions>
+                <condition id="0" name="On function" sid="533487837014775" type="Function">
+                    <param id="0" name="Name">&quot;onEnableLocalNotificationClicked&quot;</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <comment>Enable a new local notification</comment>
+                <event-block sid="610501876143289">
+                    <conditions>
+                        <condition id="17" name="Is permission granted" sid="567751086408696" type="Enhance" />
+                    </conditions>
+                    <actions>
+                        <action id="7" name="Enable Local Notification" sid="616273346766030" type="Enhance">
+                            <param id="0" name="Title">&quot;Enhance&quot;</param>
+                            <param id="1" name="Message">&quot;Local Notification!&quot;</param>
+                            <param id="2" name="Delay">5</param>
+                        </action>
+                        <action id="0" name="Call function" sid="352345688478443" type="Function">
+                            <param id="0" name="Name">&quot;writeLog&quot;</param>
+                            <param id="1" name="Parameter {n}">&quot;Enabled local notification&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="532384130857829">
+                    <conditions>
+                        <condition id="-22" name="Else" sid="192917515758572" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="146873114100653" type="Function">
+                            <param id="0" name="Name">&quot;writeLog&quot;</param>
+                            <param id="1" name="Parameter {n}">&quot;Permission is not granted&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="641594997784253">
+            <conditions>
+                <condition id="0" name="On function" sid="684531887476497" type="Function">
+                    <param id="0" name="Name">&quot;onDisableLocalNotificationClicked&quot;</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <comment>Disable any notification</comment>
+                <event-block sid="957026426350376">
+                    <conditions>
+                        <condition id="17" name="Is permission granted" sid="582816991795524" type="Enhance" />
+                    </conditions>
+                    <actions>
+                        <action id="8" name="Disable Local Notification" sid="158611083805161" type="Enhance" />
+                        <action id="0" name="Call function" sid="658927942767725" type="Function">
+                            <param id="0" name="Name">&quot;writeLog&quot;</param>
+                            <param id="1" name="Parameter {n}">&quot;Disabled local notification&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="286350916211588">
+                    <conditions>
+                        <condition id="-22" name="Else" sid="577762918809244" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="564868416017132" type="Function">
+                            <param id="0" name="Name">&quot;writeLog&quot;</param>
+                            <param id="1" name="Parameter {n}">&quot;Permission is not granted&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <comment>In-App Purchases</comment>
+        <variable constant="0" name="product_title" sid="963428084155760" static="0" type="text"></variable>
+        <variable constant="0" name="product_price" sid="836869235214487" static="0" type="text"></variable>
+        <variable constant="0" name="product_quantity" sid="620369859520422" static="0" type="number">0</variable>
+        <event-block sid="534419666063260">
+            <conditions>
+                <condition id="0" name="On function" sid="129930525298024" type="Function">
+                    <param id="0" name="Name">&quot;onPurchaseIAPClicked&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="11" name="Attempt purchase" sid="897396691576283" type="Enhance">
+                    <param id="0" name="SKU">&quot;Enhance_SKU_One&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="331234037588971">
+            <conditions>
+                <condition id="19" name="On purchase success" sid="308446628105855" type="Enhance">
+                    <param id="0" name="SKU">&quot;Enhance_SKU_One&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="712365652993096" type="Function">
+                    <param id="0" name="Name">&quot;writeLog&quot;</param>
+                    <param id="1" name="Parameter {n}">&quot;Purchase success&quot;</param>
+                </action>
+                <action id="0" name="Call function" sid="686597172508848" type="Function">
+                    <param id="0" name="Name">&quot;getIAPInfo&quot;</param>
+                    <param id="1" name="Parameter {n}"></param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="452565547353167">
+            <conditions>
+                <condition id="20" name="On purchase failed" sid="179850505900413" type="Enhance">
+                    <param id="0" name="SKU">&quot;Enhance_SKU_One&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="751156710825982" type="Function">
+                    <param id="0" name="Name">&quot;writeLog&quot;</param>
+                    <param id="1" name="Parameter {n}">&quot;Purchase failed&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="647522289402062">
+            <conditions>
+                <condition id="0" name="On function" sid="597964050349421" type="Function">
+                    <param id="0" name="Name">&quot;onConsumeIAPClicked&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="15" name="Consume product" sid="332393048895855" type="Enhance">
+                    <param id="0" name="SKU">&quot;Enhance_SKU_One&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="158621238186174">
+            <conditions>
+                <condition id="25" name="On product consumption success" sid="597873363053975" type="Enhance">
+                    <param id="0" name="SKU">&quot;Enhance_SKU_One&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="183130036549819" type="Function">
+                    <param id="0" name="Name">&quot;writeLog&quot;</param>
+                    <param id="1" name="Parameter {n}">&quot;Consume suceess&quot;</param>
+                </action>
+                <action id="0" name="Call function" sid="994028395163090" type="Function">
+                    <param id="0" name="Name">&quot;getIAPInfo&quot;</param>
+                    <param id="1" name="Parameter {n}"></param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="760449724522579">
+            <conditions>
+                <condition id="26" name="On product consumption failed" sid="106890593538738" type="Enhance">
+                    <param id="0" name="SKU">&quot;Enhance_SKU_One&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="870033404871913" type="Function">
+                    <param id="0" name="Name">&quot;writeLog&quot;</param>
+                    <param id="1" name="Parameter {n}">&quot;Consume failed&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="237708042324374">
+            <conditions>
+                <condition id="0" name="On function" sid="242659992149902" type="Function">
+                    <param id="0" name="Name">&quot;getIAPInfo&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="17" name="Get display title" sid="558530319353710" type="Enhance">
+                    <param id="0" name="SKU">&quot;Enhance_SKU_One&quot;</param>
+                    <param id="1" name="Default title">&quot;Default Title&quot;</param>
+                </action>
+                <action id="12" name="Get display price" sid="919215041182807" type="Enhance">
+                    <param id="0" name="SKU">&quot;Enhance_SKU_One&quot;</param>
+                    <param id="1" name="Default price">&quot;Default Price&quot;</param>
+                </action>
+                <action id="14" name="Get owned item count" sid="131773407580804" type="Enhance">
+                    <param id="0" name="SKU">&quot;Enhance_SKU_One&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="960368277947647">
+            <conditions>
+                <condition id="29" name="On display title received" sid="133125718889036" type="Enhance">
+                    <param id="0" name="SKU">&quot;Enhance_SKU_One&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="337694749375618" type="System">
+                    <param id="0" name="Variable">product_title</param>
+                    <param id="1" name="Value">Enhance.LastDisplayTitle</param>
+                </action>
+                <action id="0" name="Call function" sid="757949093372930" type="Function">
+                    <param id="0" name="Name">&quot;updateIAPLabel&quot;</param>
+                    <param id="1" name="Parameter {n}"></param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="352362785517362">
+            <conditions>
+                <condition id="21" name="On display price received" sid="956453595321647" type="Enhance">
+                    <param id="0" name="SKU">&quot;Enhance_SKU_One&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="773292657709123" type="System">
+                    <param id="0" name="Variable">product_price</param>
+                    <param id="1" name="Value">Enhance.LastDisplayPrice</param>
+                </action>
+                <action id="0" name="Call function" sid="325673483967784" type="Function">
+                    <param id="0" name="Name">&quot;updateIAPLabel&quot;</param>
+                    <param id="1" name="Parameter {n}"></param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="610854663280548">
+            <conditions>
+                <condition id="24" name="On owned item count received" sid="830799525260556" type="Enhance">
+                    <param id="0" name="SKU">&quot;Enhance_SKU_One&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="108979523613768" type="System">
+                    <param id="0" name="Variable">product_quantity</param>
+                    <param id="1" name="Value">Enhance.LastOwnedItemCount</param>
+                </action>
+                <action id="0" name="Call function" sid="573242894073940" type="Function">
+                    <param id="0" name="Name">&quot;updateIAPLabel&quot;</param>
+                    <param id="1" name="Parameter {n}"></param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="709824855421151">
+            <conditions>
+                <condition id="0" name="On function" sid="546488087046626" type="Function">
+                    <param id="0" name="Name">&quot;updateIAPLabel&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Set text" sid="567003461054498" type="Label">
+                    <param id="0" name="Text">product_title &amp; &quot; - &quot; &amp; product_price &amp; &quot; - Qty: &quot; &amp; product_quantity</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>GDPR</comment>
+        <event-block sid="430485366121531">
+            <conditions>
+                <condition id="0" name="On function" sid="972330783494414" type="Function">
+                    <param id="0" name="Name">&quot;gdprOptIn&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="21" name="Service terms opt-in" sid="459477479561415" type="Enhance">
+                    <param id="0" name="SDKs list">&quot;&quot;</param>
+                </action>
+                <action id="0" name="Call function" sid="556438294720500" type="Function">
+                    <param id="0" name="Name">&quot;writeLog&quot;</param>
+                    <param id="1" name="Parameter {n}">&quot;Called explicit opt in&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="889127148851811">
+            <conditions>
+                <condition id="0" name="On function" sid="467485661008182" type="Function">
+                    <param id="0" name="Name">&quot;gdprOptOut&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="23" name="Service terms opt-out" sid="827325756129742" type="Enhance" />
+                <action id="0" name="Call function" sid="397434497079480" type="Function">
+                    <param id="0" name="Name">&quot;writeLog&quot;</param>
+                    <param id="1" name="Parameter {n}">&quot;Called explicit opt out&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="638914806098150">
+            <conditions>
+                <condition id="0" name="On function" sid="201972722581848" type="Function">
+                    <param id="0" name="Name">&quot;showGdprDialogs&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="20" name="Requires data consent opt-in" sid="631981374019129" type="Enhance" />
+            </actions>
+        </event-block>
+        <event-block sid="291517496557059">
+            <conditions>
+                <condition id="32" name="On service opt-in requirement" sid="457473484466442" type="Enhance" />
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="692182344355107">
+                    <conditions>
+                        <condition id="33" name="Is service opt-in required" sid="683690388904502" type="Enhance" />
+                    </conditions>
+                    <actions>
+                        <action id="22" name="Show service opt-in dialogs" sid="851986604993388" type="Enhance">
+                            <param id="0" name="SDKs list">&quot;&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="345420223926218">
+            <conditions>
+                <condition id="34" name="On opt-in dialogs complete" sid="851016821174281" type="Enhance" />
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="574997766513127" type="Function">
+                    <param id="0" name="Name">&quot;writeLog&quot;</param>
+                    <param id="1" name="Parameter {n}">&quot;Finished displaying opt-in dialogs&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>

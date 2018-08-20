@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2project>
+    <name>Enhance Construct Demo</name>
+    <description>Enhance Sample Application</description>
+    <version>1.0.0.0</version>
+    <author>Enhance, Inc.</author>
+    <author-email>info@fgl.com</author-email>
+    <author-website>www.enhance.co</author-website>
+    <app-id>co.enhance.c2</app-id>
+    <unique-id>ux4h3gf6auab</unique-id>
+    <saved-with-version>25500</saved-with-version>
+    <used-plugins>
+        <plugin author="Scirra" id="Button" version="1">Button</plugin>
+        <plugin author="Enhance, Inc." id="EnhanceIncConstructPlugin" version="2">Enhance</plugin>
+        <plugin author="Scirra" id="Function" version="1">Function</plugin>
+        <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
+        <plugin author="Scirra" id="Text" version="1">Text</plugin>
+    </used-plugins>
+    <used-behaviors />
+    <used-effects />
+    <configurations>
+        <configuration exporter-descname="HTML5" exporter-id="html5" name="HTML5" />
+    </configurations>
+    <window-size>
+        <width>480</width>
+        <height>800</height>
+    </window-size>
+    <pixel-rounding>0</pixel-rounding>
+    <preview-effects>1</preview-effects>
+    <first-layout>Menu</first-layout>
+    <use-loader-layout>0</use-loader-layout>
+    <configuration-settings>
+        <prop name="Clear background">No</prop>
+        <prop name="Downscaling">Medium quality</prop>
+        <prop name="Enable WebGL">On</prop>
+        <prop name="Fullscreen in browser">Letterbox scale</prop>
+        <prop name="Fullscreen scaling">High quality</prop>
+        <prop name="Loader style">Progress bar &amp; logo</prop>
+        <prop name="Orientations">Portrait</prop>
+        <prop name="Pause on unfocus">No</prop>
+        <prop name="Physics engine">Box2D asm.js</prop>
+        <prop name="Preload sounds">Yes</prop>
+        <prop name="Preview browser">NW.js</prop>
+        <prop name="Sampling">Linear</prop>
+        <prop name="Use high-DPI display">Yes</prop>
+    </configuration-settings>
+    <object-folder>
+        <object-type name="Button" sid="660792483448062">
+            <plugin id="Button" />
+            <instance-variables>
+                <instance-variable name="Callback" sid="897831853507659" type="string" />
+            </instance-variables>
+        </object-type>
+        <object-type name="Logo" sid="772323292123521">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="931366801286510" speed="5">
+                    <frame duration="1" hotspotX="0.501075" hotspotY="0.508929" original-source="E:\FGL\logo-full.png">
+                        <collision-poly>
+                            <point x="0.0270833" y="0.149425" />
+                            <point x="0.885417" y="0.632184" />
+                            <point x="0.720833" y="0.494253" />
+                            <point x="0.954167" y="0.747126" />
+                            <point x="0.5" y="0.724138" />
+                            <point x="0.0270833" y="0.850575" />
+                            <point x="0" y="0.494253" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Function" sid="452262007686482">
+            <plugin id="Function" />
+        </object-type>
+        <object-type name="LogoLabel" sid="773192416822760">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="LogOutputLabel" sid="823977531891689">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="LogOutput" sid="552627624249213">
+            <plugin id="Text" />
+            <instance-variables>
+                <instance-variable name="Lines" sid="497776330053471" type="number" />
+                <instance-variable name="MaxLines" sid="388572915554186" type="number" />
+            </instance-variables>
+        </object-type>
+        <object-type name="Enhance" sid="749554763495264">
+            <plugin id="EnhanceIncConstructPlugin" />
+        </object-type>
+        <object-type name="Label" sid="746147503868456">
+            <plugin id="Text" />
+        </object-type>
+    </object-folder>
+    <families />
+    <layout-folder>
+        <layout>Menu.xml</layout>
+    </layout-folder>
+    <event-folder>
+        <event-sheet>Events.xml</event-sheet>
+        <event-sheet>Utils.xml</event-sheet>
+    </event-folder>
+    <global-instances>
+        <global-instance type="Function" uid="6" />
+        <global-instance type="Enhance" uid="14" />
+    </global-instances>
+    <sounds-folder />
+    <music-folder />
+    <files-folder>
+        <file-folder name="Icons">
+            <file name="icon-16.png" />
+            <file name="icon-32.png" />
+            <file name="icon-114.png" />
+            <file name="icon-128.png" />
+            <file name="icon-256.png" />
+            <file name="loading-logo.png" />
+        </file-folder>
+    </files-folder>
+</c2project>
